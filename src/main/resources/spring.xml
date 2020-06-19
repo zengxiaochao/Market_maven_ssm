@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!-- 整合MyBatis -->
+    <bean id="datasource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+        <property name="user" value="mall_admin"/>
+        <property name="password" value="Aa123456"/>
+        <property name="jdbcUrl" value="jdbc:mysql://rm-bp125gx407ay536yulo.mysql.rds.aliyuncs.com:3306/market?useUnicode=true&amp;characterEncoding=utf-8&amp;useSSL=false&amp;&amp;serverTimezone=GMT"/>
+        <property name="driverClass" value="com.mysql.jdbc.Driver"/>
+        <property name="initialPoolSize" value="5"/>
+        <property name="maxPoolSize" value="10"/>
+    </bean>
+
+<!--    &lt;!&ndash; 配置MyBatis SqlSessionFactory &ndash;&gt;-->
+<!--    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">-->
+<!--        <property name="dataSource" ref="datasource"/>-->
+<!--        <property name="mapperLocations" value="classpath:com/zeng/repository/*.xml"/>-->
+<!--        <property name="configLocation" value="classpath:mybatis-config.xml"/>-->
+<!--    </bean>-->
+
+    <!-- 扫描自定义的Mapper接口 -->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="com.zeng.repository"/>
+    </bean>
+</beans>

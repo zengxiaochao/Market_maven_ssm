@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/mvc
+       http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd">
+    <!-- 启动注解驱动 -->
+    <mvc:annotation-driven>
+
+    </mvc:annotation-driven>
+
+    <!-- 扫描业务代码 -->
+    <context:component-scan base-package="com.zeng">
+
+    </context:component-scan>
+
+<!--    &lt;!&ndash; 处理静态资源文件请求 &ndash;&gt;-->
+<!--    <mvc:default-servlet-handler/>-->
+    <!-- 资源映射 -->
+    <mvc:resources mapping="/**" location="/" />
+
+    <!-- 配置视图解析器 -->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/front/"/>
+        <property name="suffix" value=""/>
+    </bean>
+</beans>
