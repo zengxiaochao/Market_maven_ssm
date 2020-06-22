@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="war" name="Market_maven_ssm_test2">
-    <output-path>$PROJECT_DIR$/out/artifacts/Market_maven_ssm_test2</output-path>
-    <root id="archive" name="Market_maven_ssm_war.war">
-      <element id="artifact" artifact-name="Market_maven_ssm:war exploded" />
-    </root>
-  </artifact>
-</component>

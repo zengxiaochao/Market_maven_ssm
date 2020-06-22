@@ -50,12 +50,12 @@
     }
 </style>
 <html>
-<body>
+<body background="image/background.jpg">
 
-<div style="text-align:center;width: 100%;height: 320px;">
+<div style="text-align:center;width: 100%;height: 350px;">
 
 </div>
-<div style="text-align:center;width: 100%;height: 100%;">
+<div style="text-align:center;width: 45%;height: 100%;">
 
     <button class="button11" onclick="displayWindow2()">我是用户</button>
     <br>
@@ -179,7 +179,7 @@
         top: 0%;
         left: 0%;
         width: 100%;
-        height: 100%;
+        height: 150%;
         background-color: black;
         z-index: 10;
         /* 为mozilla firefox 设置透明度  */
