@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zeng.mapper.GoodsMapper">
+    <resultMap id="BaseResultMap" type="Goods">
+        <id property="num" column="num"/>
+        <id property="sales" column="sales"/>
+        <id property="goods_name" column="goods_name"/>
+        <id property="price" column="price"/>
+        <id property="icon_url" column="icon_url"/>
+        <id property="details_text" column="details_text"/>
+        <id property="details_img_url" column="details_img_url"/>
+        <id property="spec" column="spec"/>
+        <id property="goods_id" column="goods_id"/>
+        <id property="goods_deleted" column="goods_deleted"/>
+    </resultMap>
+
+<!--&lt;!&ndash;    根据名字查找货物&ndash;&gt;-->
+<!--    <select id="findGoodsByName" resultMap="BaseResultMap">-->
+<!--        SELECT * FROM goods  WHERE goods_name = #{name}-->
+<!--    </select>-->
+</mapper>

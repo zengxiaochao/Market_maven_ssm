@@ -13,18 +13,28 @@
     </mvc:annotation-driven>
 
     <!-- 扫描业务代码 -->
-    <context:component-scan base-package="com.zeng">
+    <context:component-scan base-package="com.zeng.*">
 
     </context:component-scan>
 
-<!--    &lt;!&ndash; 处理静态资源文件请求 &ndash;&gt;-->
-<!--    <mvc:default-servlet-handler/>-->
-    <!-- 资源映射 -->
-    <mvc:resources mapping="/**" location="/" />
+    <!--    &lt;!&ndash; 处理静态资源文件请求 &ndash;&gt;-->
+    <mvc:default-servlet-handler/>
+    <!--    <mvc:default-servlet-handler/>-->
+        <!-- 资源映射 -->
+    <!--    <mvc:resources mapping="/**" location="/" />-->
 
     <!-- 配置视图解析器 -->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-        <property name="prefix" value="/front/"/>
+        <property name="prefix" value="/"/>
         <property name="suffix" value=""/>
+    </bean>
+
+
+    <!--文件上传-->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <!--设置上传最大尺寸为5MB-->
+        <property name="maxUploadSize" value="5242880"/>
+        <property name="defaultEncoding" value="UTF-8"/>
+        <property name="resolveLazily" value="true"/>
     </bean>
 </beans>
