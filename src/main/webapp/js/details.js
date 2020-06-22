@@ -30,3 +30,8 @@ function buy() {
     var href = "indent.jsp?product_id="+document.getElementById("product_id").innerHTML+"&buy_num="+document.getElementById("buy_num").value+"&all_prize="+document.getElementById("all_prize").innerHTML;
     window.location.href = href;
 }
+
+function addcarts() {
+    var href = "../carts/newCarts?buy_num="+document.getElementById("buy_num").value+"&all_price="+document.getElementById("all_prize").innerHTML;
+    window.location.href = href;
+}

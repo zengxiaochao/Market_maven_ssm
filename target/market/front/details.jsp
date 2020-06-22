@@ -49,9 +49,13 @@
                         </div>
                     </div>
                     <div class="total">总价：<em>￥</em><em id="all_prize">${goods.price}</em></div>
+                    <div class="operate_btn" onclick="addcarts()">
+                        <a class="buy_btn">加购物车</a>
+                    </div>
                     <div class="operate_btn" onclick="buy()">
                         <a class="buy_btn">立即购买</a>
                     </div>
+
                 </div>
             </div>
             <div style="text-align:center;float: left;width: 100%;height: 600px;">

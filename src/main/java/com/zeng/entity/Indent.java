@@ -2,16 +2,16 @@ package com.zeng.entity;
 
 
 public class Indent {
-    String create_time;
-    String indent_id;
-    String money;
-    String goods_kind;
-    String user_name;
-    String user_address;
-    String user_address_all;
-    String user_tel;
-    String address_who;
-    String goods_num;
+    private String create_time;
+    private String indent_id;
+    private String money;
+    private String goods_kind;
+    private String user_name;
+    private String user_address;
+    private String user_address_all;
+    private String user_tel;
+    private String address_who;
+    private String goods_num;
 
     @Override
     public String toString() {

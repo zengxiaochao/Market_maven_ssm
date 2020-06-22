@@ -1,8 +1,10 @@
 package com.zeng.controller;
 
-
+import com.zeng.utils.getUserIp;
 import com.zeng.entity.Address;
 import com.zeng.entity.User;
+import com.zeng.entity.Userlog;
+import com.zeng.service.UserLogService;
 import com.zeng.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,6 +17,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 @Controller
 @RequestMapping("/user")
@@ -22,6 +26,9 @@ public class userController {
 
     @Autowired
     private UserService userService;
+    @Autowired
+    private UserLogService userLogService;
+
 
 
     /**
@@ -90,6 +97,27 @@ public class userController {
         userService.addUser(user);
         userService.addAddress(address);
 
+
+        /**
+         * 写注册日志
+         */
+        //获取IP
+        getUserIp user_Ip = new getUserIp();
+        //获取时间
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
+        String date = df.format(new Date());
+        //新对象
+        Userlog userlog = new Userlog();
+        userlog.setLogin_ip(user_Ip.getIp(request));
+        userlog.setLogin_time(date);
+        userlog.setUser_operation("用户注册");
+        userlog.setLogin_ornot("注册成功");
+        userlog.setLogin_name(re_name);
+        //执行写入
+        userLogService.insertIndent(userlog);
+
+
+
         return "redirect:/index.jsp";
     }
 
@@ -102,24 +130,51 @@ public class userController {
      * @return
      */
     @RequestMapping("/Login")
-    public String Login(String name, String pwd, HttpSession session)
+    public String Login(String name, String pwd, HttpSession session,HttpServletRequest request)
     {
         User user = userService.getUser(name,pwd);
         Address address = userService.getAddress(name);
+
+        /**
+         * 写登陆日志
+         */
+        //获取IP
+        getUserIp user_Ip = new getUserIp();
+        //获取时间
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
+        String date = df.format(new Date());
+        //新对象
+        Userlog userlog = new Userlog();
+        userlog.setLogin_ip(user_Ip.getIp(request));
+        userlog.setLogin_time(date);
+        userlog.setUser_operation("用户登录");
+        userlog.setLogin_name(name);
+
+
+
         if(user==null)
         {
-            System.out.println("登录失败");
+            //日志操作
+            userlog.setLogin_ornot("不存在该账号或密码错误");
+            //执行写入
+            userLogService.insertIndent(userlog);
             session.setAttribute("error","管理员账号不存在或密码错误！！！");
             return "redirect:/index.jsp";
         }
         else if(user.getManager().equals("1"))
         {
-            System.out.println("不是用户，登录失败");
+            //日志操作
+            userlog.setLogin_ornot("不是用户身份");
+            //执行写入
+            userLogService.insertIndent(userlog);
             session.setAttribute("error","管理员账号不存在或密码错误！！！");
             return "redirect:/index.jsp";
         }
         else {
-            System.out.println("成功");
+            //日志操作
+            userlog.setLogin_ornot("用户登陆成功");
+            //执行写入
+            userLogService.insertIndent(userlog);
             session.setAttribute("user",user);
             session.setAttribute("address",address);
             return "redirect:/goods/home";
@@ -134,23 +189,50 @@ public class userController {
      * @return
      */
     @RequestMapping("/mLogin")
-    public String mLogin(String name, String pwd, HttpSession session)
+    public String mLogin(String name, String pwd, HttpSession session,HttpServletRequest request)
     {
         User user = userService.getUser(name,pwd);
+
+
+        /**
+         * 写登陆日志
+         */
+        //获取IP
+        getUserIp user_Ip = new getUserIp();
+        //获取时间
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
+        String date = df.format(new Date());
+        //新对象
+        Userlog userlog = new Userlog();
+        userlog.setLogin_ip(user_Ip.getIp(request));
+        userlog.setLogin_time(date);
+        userlog.setUser_operation("管理员登陆");
+        userlog.setLogin_name(name);
+
+
         if(user==null)
         {
-            System.out.println("登录失败");
+            //日志操作
+            userlog.setLogin_ornot("管理员账号不存在或密码错误");
+            //执行写入
+            userLogService.insertIndent(userlog);
             session.setAttribute("error","管理员账号不存在或密码错误！！！");
             return "redirect:/index.jsp";
         }
         else if(user.getManager().equals("0"))
         {
-            System.out.println("不是管理，登录失败");
+            //日志操作
+            userlog.setLogin_ornot("管理员身份不符");
+            //执行写入
+            userLogService.insertIndent(userlog);
             session.setAttribute("error","管理员账号不存在或密码错误！！！");
             return "redirect:/index.jsp";
         }
         else {
-            System.out.println("成功");
+            //日志操作
+            userlog.setLogin_ornot("管理员登陆成功");
+            //执行写入
+            userLogService.insertIndent(userlog);
             session.setAttribute("user",user);
             return "redirect:/goods/manage";
         }
@@ -162,9 +244,29 @@ public class userController {
      * @return
      */
     @RequestMapping("/Logout")
-    public String mLogout(HttpSession session)
+    public String mLogout(HttpSession session,HttpServletRequest request)
     {
-        System.out.println("退出成功");
+        User user = (User) session.getAttribute("user");
+        /**
+         * 写登陆日志
+         */
+        //获取IP
+        getUserIp user_Ip = new getUserIp();
+        //获取时间
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
+        String date = df.format(new Date());
+        //新对象
+        Userlog userlog = new Userlog();
+        userlog.setLogin_ip(user_Ip.getIp(request));
+        userlog.setLogin_time(date);
+        userlog.setUser_operation("安全退出");
+        userlog.setLogin_name(user.getName());
+        //日志操作
+        userlog.setLogin_ornot("退出成功");
+        //执行写入
+        userLogService.insertIndent(userlog);
+
+
         session.invalidate();
         return "redirect:/index.jsp";
     }
