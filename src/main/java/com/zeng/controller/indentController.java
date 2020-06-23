@@ -33,7 +33,7 @@ public class indentController {
         return "redirect:/front/myindent.jsp";
     }
     @RequestMapping("/CreateIndent")
-    public String newIndent(String goods_name, String buy_num,String prize,String every_price,String every_icon, HttpSession session)
+    public String newIndent(String goods_name, int buy_num,double prize,String every_price,String every_icon, HttpSession session)
     {
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
         String date = df.format(new Date());
@@ -52,7 +52,6 @@ public class indentController {
         indent.setUser_address(address.getAddress());
         indent.setAddress_who(address.getAddress_who());
         indent.setGoods_num(buy_num);
-        indent.setGoods_price(every_price);
         indent.setGoods_icon(every_icon);
         indentService.insertIndent(indent);
         return "redirect:/front/home.jsp";

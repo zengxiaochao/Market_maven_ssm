@@ -11,6 +11,6 @@ public interface IndentMapper {
     @Select("SELECT * FROM indent;")
     List<Indent> selectIndent();
 
-    @Insert("INSERT INTO indent (goods_price,goods_icon,user_name, create_time, indent_id, money,goods_kind ,user_address , user_address_all, user_tel, address_who, goods_num) VALUES(#{goods_price}, #{goods_icon}, #{user_name}, #{create_time}, #{indent_id}, #{money} ,#{goods_kind}, #{user_address}, #{user_address_all}, #{user_tel},#{address_who}, #{goods_num})")
+    @Insert("INSERT INTO indent (goods_icon,user_name, create_time, indent_id, money,goods_kind ,user_address , user_address_all, user_tel, address_who, goods_num) VALUES( #{goods_icon}, #{user_name}, #{create_time}, #{indent_id}, #{money} ,#{goods_kind}, #{user_address}, #{user_address_all}, #{user_tel},#{address_who}, #{goods_num})")
     void select_Indent(Indent indent);
 }

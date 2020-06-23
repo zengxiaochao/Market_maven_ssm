@@ -4,30 +4,30 @@ package com.zeng.entity;
 public class Indent {
     private String create_time;
     private String indent_id;
-    private String money;
+    private double money;
     private String goods_kind;
     private String user_name;
     private String user_address;
     private String user_address_all;
     private String user_tel;
     private String address_who;
-    private String goods_num;
+    private int goods_num;
+    private String goods_icon;
 
     @Override
     public String toString() {
         return "Indent{" +
                 "create_time='" + create_time + '\'' +
                 ", indent_id='" + indent_id + '\'' +
-                ", money='" + money + '\'' +
+                ", money=" + money +
                 ", goods_kind='" + goods_kind + '\'' +
                 ", user_name='" + user_name + '\'' +
                 ", user_address='" + user_address + '\'' +
                 ", user_address_all='" + user_address_all + '\'' +
                 ", user_tel='" + user_tel + '\'' +
                 ", address_who='" + address_who + '\'' +
-                ", goods_num='" + goods_num + '\'' +
+                ", goods_num=" + goods_num +
                 ", goods_icon='" + goods_icon + '\'' +
-                ", goods_price='" + goods_price + '\'' +
                 '}';
     }
 
@@ -47,11 +47,11 @@ public class Indent {
         this.indent_id = indent_id;
     }
 
-    public String getMoney() {
+    public double getMoney() {
         return money;
     }
 
-    public void setMoney(String money) {
+    public void setMoney(double money) {
         this.money = money;
     }
 
@@ -103,11 +103,11 @@ public class Indent {
         this.address_who = address_who;
     }
 
-    public String getGoods_num() {
+    public int getGoods_num() {
         return goods_num;
     }
 
-    public void setGoods_num(String goods_num) {
+    public void setGoods_num(int goods_num) {
         this.goods_num = goods_num;
     }
 
@@ -118,17 +118,4 @@ public class Indent {
     public void setGoods_icon(String goods_icon) {
         this.goods_icon = goods_icon;
     }
-
-    public String getGoods_price() {
-        return goods_price;
-    }
-
-    public void setGoods_price(String goods_price) {
-        this.goods_price = goods_price;
-    }
-
-    String goods_icon;
-    String goods_price;
-
-
 }

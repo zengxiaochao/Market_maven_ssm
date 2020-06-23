@@ -73,13 +73,6 @@
 
                 <div style="">
                     <a href="../user/Logout">
-                        查询我的订单
-                    </a>
-
-                    <a href="../user/Logout">
-                        更改个人信息
-                    </a>
-                    <a href="../user/Logout">
                         注销
                     </a>
                 </div>

@@ -49,36 +49,29 @@
                         </p>
                     </div>
                     <ul class="orderInfo">
-
-                        <c:set value="${fn:split(indent.goods_kind, ' ')}" var="goods_li" />
-                        <c:set value="${fn:split(indent.goods_num, ' ')}" var="num_li" />
-                        <c:set value="${fn:split(indent.goods_price, ' ')}" var="price_li" />
-                        <c:set value="${fn:split(indent.goods_icon, ' ')}" var="icon_li" />
-                        <c:forEach items="${goods_li}"  varStatus="i" var="goods_l">
                             <li>
-                                <img src=${icon_li[i.index]} />
+                                <img src=${indent.goods_icon} />
                                 <div class="info">
                                     <p class="productName">
-                                            ${goods_li[i.index]}
+                                            ${indent.goods_kind}
                                     </p>
                                     <p class="count">
                                             <span class="unitPrice">
-                                                        &yen;${price_li[i.index]}
+                                                        &yen;${indent.money}
                                                     </span>
                                         <span class="number">
-                                                        &times;${num_li[i.index]}
+                                                        &times;${indent.goods_num}
                                                     </span>
                                     </p>
                                 </div>
                             </li>
-                        </c:forEach>
                     </ul>
                     <div class="orderPrice clearfix">
                         <div class="detail">
                             <p class="amount">
                                 订单金额：
                                 <span>
-                                                &yen;${indent.money}
+                                                &yen;${indent.goods_num*indent.money}
                                 </span>
                             </p>
                         </div>

@@ -1,0 +1,59 @@
+table {
+    width: 80%;
+    position: relative;
+    margin: 30px auto;
+    border-collapse: collapse;
+    border: 1px solid gray;
+}
+
+th {
+    background: cornflowerblue;
+    height: 2.5em;
+}
+
+.tdone {
+    width: 10%;
+}
+
+.tdtwo {
+    width: 20%;
+}
+
+.tdthree {
+    width: 20%;
+}
+
+.tdfour {
+    width: 20%;
+}
+
+.tdfive {
+    width: 20%;
+}
+
+.tdsix {
+    width: 10%;
+}
+
+td {
+    height: 2em;
+    text-align: center;
+    border: 1px solid #ccc;
+}
+
+.num {
+    display: inline-block;
+    width: 3em;
+}
+
+input {
+    height: 2em;
+}
+
+.talast {
+    text-align: left;
+}
+
+
+
+
